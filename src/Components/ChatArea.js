@@ -35,12 +35,12 @@ function ChatArea() {
 
         if (currentChat.isGroupChat) {
           console.log("🧠 Fetching messages for chat:", currentChat);
-          res = await axios.get(`http://localhost:5001/api/messages/group/${currentChat.chatId}`, {
+          res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/messages/group/${currentChat.chatId}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
           });
         } else {
           res = await axios.get(
-            `http://localhost:5001/api/messages/${userId}/${currentChat.receiverId}`,
+            `${process.env.REACT_APP_API_BASE_URL}/api/messages/${userId}/${currentChat.receiverId}`,
             {
               headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             }

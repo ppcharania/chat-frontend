@@ -18,7 +18,7 @@ export default function Users() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:5001/api/users', {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const others = res.data.filter(u => String(u.id) !== String(userId));

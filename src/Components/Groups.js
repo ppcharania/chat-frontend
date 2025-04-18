@@ -15,7 +15,7 @@ function Groups() {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/chats/user/${userId}/groups`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/chats/user/${userId}/groups`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setGroups(res.data);

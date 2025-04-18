@@ -37,7 +37,7 @@ function Sidebar() {
   useEffect(() => {
     const fetchUsersAndLastMessages = async () => {
       try {
-        const res = await axios.get('http://localhost:5001/api/users', {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -45,8 +45,7 @@ function Sidebar() {
         const convList = await Promise.all(
           otherUsers.map(async (user) => {
             try {
-              const res = await axios.get(
-                `http://localhost:5001/api/messages/${userId}/${user.id}`,
+              const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/messages/${userId}/${user.id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
               );
               const lastMsg = res.data?.[res.data.length - 1];
@@ -85,7 +84,7 @@ function Sidebar() {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/chats/user/${userId}/groups`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/chats/user/${userId}/groups`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setGroups(res.data);

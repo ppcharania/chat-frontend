@@ -15,7 +15,7 @@ function CreateGroups() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:5001/api/users', {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const filtered = res.data.filter((u) => String(u.id) !== String(userId));
@@ -42,7 +42,7 @@ function CreateGroups() {
     try {
       const userIds = [...selectedUsers, parseInt(userId)];
       const res = await axios.post(
-        'http://localhost:5001/api/chats/group',
+        `${process.env.REACT_APP_API_BASE_URL}/api/chats/group`,
         { groupName, userIds },
         { headers: { Authorization: `Bearer ${token}` } }
       );
