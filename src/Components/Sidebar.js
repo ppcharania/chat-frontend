@@ -11,6 +11,7 @@ import ConversationsItem from './ConversationsItem';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import socket from '../socket';
+import impact_bridge from './impact_bridge.png'
 
 function Sidebar() {
   const [conversations, setConversations] = useState([]);
@@ -104,6 +105,18 @@ function Sidebar() {
             <AccountCircleIcon />
           </IconButton>
         </div>
+        <img
+    src={impact_bridge}// Replace with actual path or dynamic src
+    alt="Sidebar Logo"
+    className="sb-header-image"
+    style={{
+    height: '40px',
+    width: '200px',
+    objectFit: 'cover',
+    borderRadius: '50%'
+  }}
+
+  />
         <div>
           <IconButton onClick={() => navigate('/app/users')}>
             <PersonAddIcon />
